@@ -3,198 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Albert</title>
+    <title>Main Street AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 650px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 0;
+            padding: 0;
             color: #333;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-        }
-        a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .section {
-            margin: 2em 0;
-        }
-        .social-links {
-            margin-top: 2em;
-        }
-        .social-links a {
-            display: block;
-            margin: 0.5em 0;
-        }
-        .client-story {
-            border-left: 3px solid #0066cc;
-            padding-left: 1em;
-            margin: 1.5em 0;
+
+        .header {
+            padding: 4rem 2rem;
+            border-bottom: 2px solid #2196F3;
+            margin-bottom: 2rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('slopic.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
-        /* New styles for collapsible functionality */
-        .story-content {
-            display: none;
-            transition: all 0.3s ease;
-        }
-        .story-header {
-            cursor: pointer;
-            position: relative;
-            padding-right: 30px;
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            font-weight: 600;
             margin: 0;
-            user-select: none;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
-        .story-header:after {
-            content: '+';
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 20px;
-            color: #0066cc;
+
+        .header .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2em;
+            color: white;
+            margin-top: 0.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
-        .story-header.active:after {
-            content: '−';
+
+        .description {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            text-align: center;
+            font-size: 1.2em;
         }
-        .story-content.active {
-            display: block;
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            text-align: left;
+            color: #333;
+            font-size: 2em;
+            margin: 3rem 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2196F3;
+            background: none;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .story-card {
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .story-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-card .story-info {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .story-card h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.2em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .story-card p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+
+        .founder-section {
+            background-color: #F5F5F5;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .founder-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .founder-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            margin-top: 0;
+        }
+
+        .founder-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links a {
+            color: #2196F3;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .stories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>John Albert</h1>
-    
-    <div class="section">
-        I'm a senior at Cal Poly studying Information Systems and the founder of Main Street AI. 
-        I help local businesses in San Luis Obispo understand the usefulness of AI through 
-        free 30-minute consultations.
+    <div class="header">
+        <h1>Main Street AI</h1>
+        <div class="tagline">Bringing AI to Main Street</div>
     </div>
-    
-    <div class="section">
-        <h2>About Main Street AI</h2>
-        <p>
-            The way I work has changed dramatically due to the continuous improvement of AI. 
-            As someone who spends a fair amount of time experimenting with these tools, I've considered 
-            that perhaps not everyone is experiencing the same productivity gains that I have. I see this project 
-            as an opportunity to be boots on the ground – to learn whether small businesses are adopting this technology and, 
-            hopefully, to provide practical advice about how AI can address actual business needs. I pulled a list 
-            of more than 200 local SLO businesses, gathered phone numbers and emails, and began conducting cold outreach.
-        </p>
+
+    <div class="description">
+        <p>Main Street AI brings the power of artificial intelligence to local businesses in San Luis Obispo through free 30-minute consultations. We help business owners understand and implement AI solutions that address their unique needs and challenges.</p>
     </div>
+
+    <h2 class="section-title">Client Stories</h2>
     
-    <div class="section">
-        <h2>AI on Main Street: Client Stories</h2>
-        <div class="client-story">
-            <h3 class="story-header"><a href="ba-start.html" style="color: inherit; text-decoration: none;">BA Start Arcade and Taproom - January 24, 2025 →</a></h3>
-            <div class="story-content">
-                <p>My first consultation was with BA Start Arcade and Taproom in downtown SLO. The business combines an arcade gaming venue with a full-service bar and kitchen, hosting everything from corporate events to gaming tournaments. The owner, with ties to the tech industry and Silicon Valley, launched this business venture two years ago.</p>
-                <p>The consultation revealed some important insights about AI adoption in local businesses. Despite the owner's background, AI tools aren't part of his daily operations, citing the inability of AI to conduct tasks at a human level of quality. He believes that AI won't begin replacing jobs for another 20 years - I don't hold him to that ballpark prediction, but this perspective highlights the disconnect between the tech world and main street business.</p> 
-                <p>Through discovery, I learned that a large aspect of the business is social networking. The owner has hired two full-time employees to run their social media pages. He emphasized the importance of creative approaches assisting in the pursuit of building name recognition. I asked Claude to create 6 months worth of weekly events and used examples of events that they've promoted in the past (Jenga night, Smash Bros tourney, Karaoke night, etc.) to assist in this process. Claude was able to come up with new ideas that were relevant to San Luis Obispo e.g, Fraternity vs. Sorority game night. We focused on this example, and in seconds, were able to generate several social media posting ideas and svg flyers. What surprised him was the iterative process of communicating with Claude. After Claude drafted the first flyer, we continued prompting several more versions until he received a result to his liking. We used descriptive language, and provided an example of a flyer that he's created in the past.</p> 
-                <p>This underscores what I think is most important right now in communicating with AI systems - the ability to provide clarity and context. The improvements in performance are most noticeable when LLMs have a clear understanding of what you're looking to accomplish. I suspect this to be an area of focus – helping business owners understand that at their current stage, you should treat these systems as a highly capable assistant with amnesia. Context is key.</p> 
-                <p>Going forward, I plan to develop a system prompt for Claude that will ask business owners quick hitters on their business, goals, and challenges. This way, these sessions will be more interactive. I found that there was some awkward idle time while I was typing a prompt. If I can conduct the discovery process through Claude, then shifting gears to potential use cases will feel more natural – for both the client and Claude.</p>
-                <p>Claude's computer use demonstration particularly resonated, showing how AI could automate various aspects of the owner's business operations, specifically business communications. This was the real "knock-your-socks-off moment." He showed me long lists of emails, texts, and Slack messages that he responds to. He envisioned a world where an AI system is integrated with his calendar and can act on his behalf, just like a personal assistant. I hope that I can have another visit with him when this is possible! I suspect it will be soon.</p>
-                <p>One clear challenge the owner faces is creative design - he has hired three artists for their pinball league logo without success. While we explored AI solutions for this, it highlighted current limitations in AI's creative capabilities because it couldn't quite create the logo he was looking for. We also conducted a competitive analysis of other Barcades within a two hour radius using DeepSeek's WebSearch feature. Though he found this interesting, he was able to point out a lot of inaccuracies in the analysis, both about his own value proposition and details about competitors as well.</p>
-                <p>We wrapped the session by sharing a beer and swapping stories about life beyond business/AI. I am very thankful for the time that he gave me. I'm happy to have my first consultation under my belt. I'm excited to build on this and meet with other clients!</p>
+    <div class="stories-grid">
+        <a href="ba-start.html" class="story-card">
+            <img src="o.jpg" alt="BA Start Arcade and Taproom">
+            <div class="story-info">
+                <h3>BA Start Arcade and Taproom</h3>
+                <p>January 24, 2025</p>
+            </div>
+        </a>
+        <a href="slo-landscaping.html" class="story-card">
+            <img src="Rob.jpg" alt="SLO Landscaping">
+            <div class="story-info">
+                <h3>SLO Landscaping</h3>
+                <p>January 27, 2025</p>
+            </div>
+        </a>
+        <a href="jeffs.html" class="story-card">
+            <img src="Jeff.png" alt="Jeff's">
+            <div class="story-info">
+                <h3>Jeff's</h3>
+                <p>January 27, 2025</p>
+            </div>
+        </a>
+        <a href="baxter-moerman.html" class="story-card">
+            <img src="Baxter.png" alt="Baxter Moerman">
+            <div class="story-info">
+                <h3>Baxter Moerman</h3>
+                <p>January 30, 2025</p>
+            </div>
+        </a>
+        <a href="battle-axe.html" class="story-card">
+            <img src="Battle.png" alt="Battle Axe">
+            <div class="story-info">
+                <h3>Battle Axe</h3>
+                <p>February 5, 2025</p>
+            </div>
+        </a>
+        <a href="stephen-patrick.html" class="story-card">
+            <img src="Stephen.png" alt="Stephen Patrick Design">
+            <div class="story-info">
+                <h3>Stephen Patrick Design</h3>
+                <p>February 5, 2025</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="founder-section">
+        <div class="founder-content">
+            <div class="founder-image">
+                <img src="PaloLawn.JPG" alt="John Albert">
+            </div>
+            <div>
+                <h2>Meet the Founder</h2>
+                <p>As a Cal Poly Information Systems student and tech enthusiast, I saw a disconnect between the AI revolution happening in Silicon Valley and its adoption on Main Street. I started Main Street AI to bridge this gap, helping local businesses understand and implement AI solutions that can transform their operations.</p>
             </div>
         </div>
-    <div class="client-story">
-    <h3 class="story-header"><a href="slo-landscaping.html" style="color: inherit; text-decoration: none;">SLO Landscaping - January 27, 2025 →</a></h3>
-    <div class="story-content">
-        <p>I met the owner of SLO Landscaping at Scout Coffee on Monday morning. After my first consultation on Friday, I've come up with a much better way of leading these meetings. I began by explaining how chatting with Claude works at a basic level. I created a system prompt (which can be found in the materials section) that interviewed the owner, focusing on gathering context about what a typical day looks like and what some of his challenges might be. This was very effective in facilitating a natural conversation about his business goals and what some of his pain points are. With the assistance of Claude, I ran an effective discovery session. His business focuses mainly on commercial maintenance. As the founder and owner, he spreads himself pretty thin – delegating employees, growing relationships with customers, managing finances on QuickBooks, creating marketing content, and occasionally visiting job sites.</p>
-
-        <p>The owner started SLO Landscaping in 2017: "After my wife and I had my son, I wanted to do something that gave me more autonomy in my schedule – this can be difficult when you're working for someone else." He grew up in LA working with his father who also owned a landscaping business. During the discovery session, Claude asked questions about his general thoughts around AI. He has heard about "the ChatGPT thing" from his son, but doesn't have good feelings about AI: "I don't have positive feelings about AI. We're letting something do everything for us, making us dumber." He also said that part of his disconnect from the AI/tech world is due to the nature of the landscaping business: "There is not a lot of advancement from a tech standpoint in our industry…there are now robot lawn mowers though!" When I started Main Street AI, I was looking forward to interacting with clients like this. Those who, through no fault of their own, have been on the outside of the AI echo chamber.</p>
-
-        <p>Claude was able to identify two areas where the owner could see immediate productivity gains: business communications and marketing. The need for assistance in these areas was confirmed by the owner: "I actually did use AI once recently in an email. Writing is not a strong suit of mine, so it helped me a lot. It was able to rewrite my email and I liked that version more." I prepared a casual landscaping communication beforehand so I could demonstrate how Claude can respond to emails: "Hey Sarah - took a look at ur backyard today. Think we can do something really nice with it - clear out those old bushes, put in a nice patio w some built in lighting. Prob looking at 8-10k range depending what stone u want. Can get started next week if ur interested. Lmk if u wanna meet up tmrw to go over details." I prompted Claude by giving it the persona of a "communication specialist skilled in email writing and tone adaptation." He was pleased with the results that we received and found great use in Claude's ability to understand tone: "I don't understand tone. I'm older, I didn't grow up texting. I can't tell if someone is mad, happy, or just fine." I'm sure we all have parents who face similar challenges when texting. I know for myself, sometimes it feels as if I'm not communicating with my dad, but rather some type of call center robot texting machine. I think it is taken for granted how, like learning a language, you develop a fluency in deciphering digital messages when you grow up texting. This is similar to becoming an effective prompter, and why I advise everybody to start communicating with AI systems ASAP.</p>
-
-        <p>After this, I showed the owner how we could feed Claude data from his QuickBooks and create useful visualizations. I demonstrated this feature by asking Claude to analyze over 10,000 rows of sample sales data. He was surprised by the speed at which Claude was able to create a dashboard highlighting sales by region, sales by customer segment, and most popular service. The owner had this to say about marketing: "We use yelp and home advisor. I don't see results from Google ads. We paid someone for social media but it was hard to monetize it. I'm not paying anyone for that now but I know it's important, but it is time consuming." This is when the importance of context clicked with the owner. At this point, Claude already had a solid understanding of the business, so creating relevant marketing messages was just a prompt away. Claude was now essentially a SLO Landscaping employee (just without the shovel skills). I also showcased Claude's computer use capabilities by asking it to navigate to the contact section of the SLO Landscaping website. He was able to see how the repetitive tasks he completes through QuickBooks could soon be automated.</p>
-
-        <p>"If I had to give you any advice going forward as you keep doing this, lead with why you're doing this. Tell people why you're calling them out of the blue and offering to help them for free. That's not normal in today's society." That was part of the closing exchange between myself and the owner of SLO Landscaping. Earlier in the consultation, he stopped to ask why I was doing this; he wanted to know what my angle was, or if he was being sold anything. I explained that I'm genuinely interested in promoting the adoption of this technology that's changing the way we work and, more importantly, the fabric of society as a whole. I pointed him to this website (which was built with the assistance of Claude) and showed how I'm documenting this journey. As we reached the end of our 30 minute session, I asked if his outlook on AI has changed and if he will begin to use these tools: "I know I have to evolve with the times, so I'm glad to have gained a better understanding about how AI can help me." The owner plans to experiment with Claude, incorporating both the web and mobile versions into his workflow. It was a beautiful morning in San Luis Obispo; I'm grateful that the owner gave up his time to grab a cup of coffee and talk about AI.</p>
     </div>
-</div>
-<div class="client-story">
-    <h3 class="story-header"><a href="jeffs.html" style="color: inherit; text-decoration: none;">Jeff's - January 27, 2025 →</a></h3>
-    <div class="story-content">
-        <p>For my third consultation, I visited Jeff's, a vintage clothing store in downtown SLO. The store opened in September of 2024. The owner, Jeff, is 30 years old and is passionate about the mission of his business: "I have a passion for vintage clothing and trying to eliminate fast fashion in the clothing world. I think it's a big problem – caring about the climate is a core value of our business and helped ignite my flame for entrepreneurship." Jeff worked in the creative space prior to opening Jeff's, primarily focused on video production. Jeff is optimistic about the future of AI: "I use ChatGPT slightly, I think it's sick; it's the future. I think it's funny that schools hate it so much." Sidetrack – I really agree. From a student's perspective, it's clear that AI has been mismanaged in schools thus far. It has been more than two years since ChatGPT became one of the most popular consumer technologies, yet there have been no noticeable changes in class curriculums to reflect the new capabilities that we've been armed with. It's like we're playing basketball on Fisher-Price hoops. Moving on…</p>
 
-        <p>I was excited that Jeff was open to experimenting with these tools. Through the Claude-assisted discovery process (using the system prompt in the materials section), I learned that a significant portion of Jeff's day-to-day responsibilities involve digital tasks, mostly inputting information into shopify and making sure his online inventory stays current. I have never used Shopify, but Jeff was able to show me what this process looks like. I was surprised to learn that there's already a number of AI features integrated into Shopify e.g, a GenAI product description tool, and a sales analysis dashboard that creates visualizations related to product performance. In these cases, it seems like using an external AI tool would be unnecessary.</p>
-
-        <p>Jeff spends a lot of time managing his employees. Jeff considers all of his in store employees to be a part of his "team of marketers" – everybody that works at the store plays a part in maintaining Jeff's active social media presence by creating content. Jeff has hired a full-time social media manager to keep things running smoothly. I asked Jeff if he ever has considered managing social media himself:  "I certainly have a hard time delegating away all of the social media work because of my background in video – I still spend time coming up with new ideas." I then gave Claude the persona of a "social media strategist specializing in local business marketing in the San Luis Obispo area" and requested Claude to create a two week schedule for social media posts. We assisted Claude in this process by adding some more relevant details (remember, context is key): "I am looking to create short form content on Instagram, our content is targeted toward Cal Poly students." Jeff saw some value here: "I can see how Claude could be used as a brainstorming buddy." Exactly – now that Claude has spent some time getting to understand Jeff and his business, it is much more effective in creating outputs that may actually be useful. This is what I hope clients see after these sessions.</p>
-
-        <p>During the discovery process, Claude asked Jeff if he experiences any challenges in business communications: "I spend some time texting employees and maintaining relationships with returning customers, but I wouldn't describe this as any sort of pain point." Claude then suggested, by itself, that it could help create newsletters for customers that have purchased from Jeff's. Jeff hasn't considered creating a members only newsletter, but he acknowledged that this was a "good idea."  Based on the fact that Jeff doesn't struggle with business communications, and given the nature of retail, Claude saw an opportunity for Jeff's to enhance customer relationships. This wasn't Claude simply acting as a brainstorming partner, this seems to be at least a step above that - Claude engaged in actual strategic business thinking by connecting relevant information to generate meaningful recommendations.</p>
-
-        <p>At about 20 minutes into the session, we said goodbye to our friend Claude and said hello to CCP agent, DeepSeek. I wanted to enable DeepSeeks search feature to conduct a competitive analysis (Anthropic's CEO, Dario Amodei, has announced publicly that a search feature is coming soon, so I won't have to continue using DeepSeek!). The competitive analysis was interesting – DeepSeek conducted an entire SWOT analysis in about 10 seconds of four competitors, two of which Jeff had never heard of. I think a lot of this information is valuable. As someone who is used to communicating with AI systems, I've noticed that I take some of these outputs for granted. I think I can be quick to move on to the next prompt when it may be wise to spend some time letting the client grasp what's in front of them.</p>
-
-        <p>I ended this session demonstrating Claude's beta version of computer use. This has kind of become my grand finale if you will. I showed Jeff how fast Claude could begin clicking around in Shopify with just one prompt. As mentioned earlier, Jeff spends a lot of time in Shopify, so a tool that could automate this for him would be "game-changing." I think the theme of these sessions so far have been consistent: letting AI gather lots of context about your business + growth in your prompting skills = noticeable improvements in performance, which leads to more practical ways in which AI can help your business. At its current stage, AI might still be somewhat limited; they aren't magic boxes that can solve all your problems, but, if you are skilled at working with these tools, I promise that you will see real productivity gains. And it's best to start now – the slight productivity gains you notice today will turn into massive productivity gains as new features and versions of these models continue to drop every couple of months. I sent Jeff a follow up email thanking him for his time and highlighting some of the tools/prompts we used. I don't think it'll be long until I see Jeff again though – I saw a vintage Seahawks hat in there that I just might have to cop. #GoHawks</p>
-    </div>
-</div>
-<div class="client-story">
-    <h3 class="story-header"><a href="baxter-moerman.html" style="color: inherit; text-decoration: none;">Baxter Moerman - January 30, 2025 →</a></h3>
-    <div class="story-content">
-        <p>I know I've become spoiled by California weather when on this 45-degree and sunny morning in late January, I was going to begin this story with, "on a rather brisk morning in San Luis Obispo… " My friends back home in WA would laugh at me. Anyway, for my fourth consultation, I worked with Baxter Moerman, a jewelry store in SLO. I was met by Matt Baxter who opened Baxter Moerman in 2009 with his business partner, Matt Moerman. I was then introduced to whom I think might be the real brains of the operation, Indy, a cute, mixed-breed, 8-year-old pup who walked around like he owned the place. Indy and Matt B. showed me around the store, and honestly, I don't think I've ever been into a jewelry store that wasn't in a mall, so this was a fascinating experience. I got to see where all the magic happens: in the back of the store, the goldsmiths sit on their benches, handcrafting precious metals into fine jewelry.</p>
-
-        <p>After my tour, I sat down with both Matt B. and Matt M. to begin our session. They were very receptive to the discovery process – both have used ChatGPT before, so they understood that providing a lot of relevant details would be beneficial later on. Recently, Matt B. used ChatGPT to craft an email to a prospective employee. He described the iterative process that took place when trying to produce the result he was looking for: "I corrected GPT's response three to four times and switched it up slightly to create better versions. I also did something similar with our newsletter, which we try to do about twice a month." When asked about their general thoughts on AI, they expressed similar concerns: "I think it's already making an impact with social media – the fact that you have to question everything you see. You've got to ask, 'is this a real story, is this a real picture?' It makes me question things more."</p>
-
-        <p>When they aren't designing jewelry, they are tasked with a number of administrative responsibilities: communicating with customers, making sure they aren't missing deadlines, training employees, entering product information and sales data into QuickBooks, and monitoring their online and social media presence. Matt M. mentioned, "We should actually do a newsletter this week because we're headed to the Tucson Gem & Mineral Show next week, so we'll be closed for three days." We prompted Claude by asking it/him/her (idk) to consider this information, and with Valentine's Day right around the corner, we decided to craft a newsletter focused on pieces for a special someone. Matt B. was able to see the usefulness of this prompt: "Sometimes, the hardest part is staring at a blank page, not knowing where to begin." Though I believe it's important to preserve the authenticity of your writing, it's smart to at least begin to incorporate AI into your workflow. It's clear that using Claude as a brainstorm buddy can save time, something that business owners don't have a lot of. Last night, I created a prompt that could create a gift guide for Mother's Day. I specified that this guide should include 3-4 price tiers, personal significance suggestions (why these pieces are relevant for Mother's Day), and an emphasis on craftsmanship. I thought that it might be useful to present this guide as an SVG flyer as this would be a natural fit for their newsletters and social media pages. I asked Claude to create an "elegant SVG flyer." Matt M. realized that this flyer could be adapted for Instagram, which "could save time that I spend trying to create the perfect flyer in Canva." I expect that Claude will only continue to get better at creating images throughout 2025.</p>
-
-        <p>I learned that Matt B. and Matt M. were co-workers at another jewelry store in SLO before deciding to open their own shop. What inspired them to become business owners was "a desire to sell pieces that we've made – we wanted freedom of design." There's a lot that makes Baxter Moerman unique from other jewelers. For example, their manufacturing process. They use AutoCAD to create designs, which then gets sent to their New York manufacturer who provides the metals needed for the goldsmiths to add their handcrafted touch. Another differentiator is the scope of work they do. Some jewelers are specialists, meaning they focus solely on bridal (engagement rings and weddings) or basic repairs. Instead of specializing, Baxter Moerman crafts pieces for all occasions. Claude could be described as a geography geek, having extensive knowledge of seasonal events in places like SLO. Because Baxter Moerman serves the SLO area for any occasion, I asked Claude to "Create a focused marketing calendar that ties Baxter Moerman's custom jewelry business to San Luis Obispo's unique local events and character." Claude returned with some strategic business marketing suggestions, such as "Partner with local wedding venues (Santa Margarita Ranch, Biddle Ranch Vineyard)" and "Feature stories of local Cal Poly alumni who chose Baxter Moerman for their special moments." This led to another discussion about tone adaptation, and how Claude is capable of crafting stories for special pieces of jewelry.</p>
-
-        <p>Toward the end of our session, Matt B. revealed a fascinating story of a recent trip to a grocery store where he saw a Cal Poly student having a full-on conversation with ChatGPT in an aisle, receiving assistance in purchasing items for a recipe. This feels like a great example of AI beginning to become impactful in society. Together, we envisioned a future where everyone will soon be having conversations with their AI assistants in public – drawing comparisons to the emergence of cell phones. Something I always find mind-boggling is looking at photos of sporting events or concerts from the early to mid-2000s and not a phone in sight. Today, it's as if there is some rule for attending concerts - "<em>you must hold the magical brick in the sky for all to see</em>" (shoutout Coldplay for attempting to curb this). To represent futuristic AI capabilities, we experimented with Claude's computer use feature, which gives Claude control to operate your computer autonomously. I asked Claude to navigate to Baxter Moerman's website and submit a customer inquiry using my information. Claude gave its best effort, but unfortunately this feature is still in beta so it wasn't able to submit the form, giving me a "rate limit error" message (it's okay, Claude. I believe in you 🙂). I had a great time visiting Baxter Moerman. I found this consultation to be very productive – I hope Matt Baxter and Matt Moerman did as well. If you're in the market for the best jewelry in SLO, you know where to go! Baxter Moerman will be returning from Tucson with a variety of special gemstones to work with.</p>
-    </div>
-</div>
-<div class="client-story">
-    <h3 class="story-header"><a href="battle-axe.html" style="color: inherit; text-decoration: none;">Battle Axe - February 5, 2025 →</a></h3>
-    <div class="story-content">
-        <p>The first time I came to San Luis Obispo was in August of 2021 during SLO Days (Cal Poly Orientation). I was downtown at night with my Mom on Higuera Street and as we looked at every bar, restaurant, and shop, something caught our eye: what we saw was shocking. People of all ages, seemingly normal looking, wielding axes and flinging them full speed ahead. "HERE'S JOHNNY!" somebody exclaimed, vigorously launching an axe overhead. "Should we get out of here?" we thought. No. We decided to move forward courageously, setting aside our fear of axe-bearing children to further investigate this mysterious scene. We were relieved to find that this wasn't some strange reenactment of The Shining or something – this was Battle Axe! An axe throwing business! We had no idea this was even a thing, but it seemed exciting, so we decided to give it a shot. We booked 30 minutes and had a lot of fun</p>
-
-        <p>For my fifth consultation, I met with Neil, the owner of Battle Axe. Neil moved to California from Boston when he was only 3, and then attended Fresno State (not immediately, of course), earning his MBA and then working as a CFO for several years. 10 years ago, Neil decided to trade in the corporate world for a life of entrepreneurship. Neil also owns multiple locations of Tails, a very popular canine supply store right up the street. The origin story of Battle Axe is a great one: In 2018, the mudslides in Montecito caused Neil and his family to miss a cruise that they had arranged, diverting them to vacation in Los Angeles. While in LA, Neil came across axe throwing and “knew that it would work in San Luis Obispo.” Battle Axe opened in SLO after pandemic restrictions were lifted in June of 2021. As a busy entrepreneur, Neil handles, with assistance from his wife, all the aspects of running a business that you could think of: finances, training, customer and vendor communication, marketing, and so on. Despite the heavy workload, Neil manages – “I'm on autopilot. Over the years, I’ve figured out how to stay on top of things.” However, that’s not to say there aren’t ways in which AI can assist Neil in operating his businesses.</p>
-
-        <p>Neil doesn’t use AI currently: “I don’t know enough about AI to give me a reason to use it.” Neil mentioned that one of the tasks that consumes a lot of his time is just manually sending confirmation emails to clients: “just while sitting here, I’ve already sent out a confirmation email.” We explored practical solutions to address this. We created a chat with Claude that had context about Battle Axe, safety rules, and other information that customers need to know. With this Template, Neil can utilize Claude to create confirmation emails more quickly; as opposed to first reviewing the customer information, copying their email, and then drafting a response. As I uncovered more information about the business, I asked Neil what sort of events they host: “We have a lot of birthday parties and corporate events, but it’s fallen off in the last two years. How can we get this crowd back?” I’m no marketing expert so this was a perfect time to use Claude as a brainstorming buddy. I typed into Claude word for word what Neil had just said. Claude then developed a detailed plan that included partnering with hotels, establishing partnerships with HR firms, connecting with tech companies around Tank Farm Road, and partnering with Cal Poly departments for team-building events. This conversation prompted Claude to create “What to do in SLO” content that positions Battle Axe as a must-do activity for visitors (which it is). While all of this seemed useful to Neil, it didn’t solve his biggest problem: "How do we actually get this stuff out into the community? What's an effective outreach tool?" This led to a discussion about outreach strategies. Currently, Neil doesn’t have a newsletter, but he recognizes that this would be useful in enticing customers to return: “I don’t have enough time to consistently write them.” We asked Claude to draft a Valentine’s Day themed newsletter. Claude crafted an engaging message, incorporating Battle Axe values, while also offering special promotions, something that Neil said he is always looking to capitalize on. Having welcomed over half a million throwers since opening, newsletters could provide significant reach for Battle Axe as a marketing tool.</p>
-
-        <p>Though Battle Axe has an Instagram, it is not as active as it could be. I’ve realized that social media sometimes seems like an afterthought for business owners, and it’s easy to see why. When you’re tasked with so many other responsibilities, it’s hard to realize the value of an active social media presence. Using AI to help you think creatively here can be a massive time-saver. I think a lot of people are under the impression that AI can’t generate truly authentic and engaging content, but I think you’d be surprised. These systems have gotten and continue to get a lot better at understanding the uniqueness of your business, especially if you take the time to iterate on the responses that AI gives you. What helps is providing examples of posts that you like and specifying what exactly it is that you aim to achieve. In Neil’s case, he said that “while a lot of our posts are entertaining, I’m not sure they do the best job of actually pulling people in.” To address this, we used ChatGPT’s search feature. We received 10 content ideas unique to San Luis Obispo in seconds. GPT created an entire social media schedule based around a “Bullseye Streak Challenge.” I think this has the potential to generate enough buzz to draw Cal Poly students, families, and tourists alike to Battle Axe to give the challenge their best shot.</p>
-
-        <p>Perhaps the most significant pain point that Neil shared was managing inventory across his businesses. When discussing automation, Neil expressed interest in having his inventory be integrated with Clover, his POS system: "If I could have data automatically load into the Clover system, that would be nice." The complexity of working with multiple vendors, tracking reorder points, and managing turnover currently creates a time-consuming manual process for Neil. I showed Neil Claude's computer vision capabilities. This demonstrated how, in the near future, AI could directly interact with systems like Clover to automate many of his manual tasks. I explained to Neil that while these capabilities might seem futuristic, they're likely to become available by the end of this year. I know I’ve harped on this a lot, but for good reason – learning to communicate effectively with AI now will help business owners like Neil take full advantage of more powerful tools when they arrive, like computer use. I’m thankful for the time that he gave me on a busy Wednesday morning. Neil said that he will begin to work with Claude and ChatGPT. I know where I’ll be headed when my family comes to town for my graduation in June!</p>
-    </div>
-</div>
-<div class="client-story">
-    <h3 class="story-header">Stephen Patrick Design - February 5, 2025</h3>
-    <div class="story-content">
-        <p>Sometimes when you know, you know. This was the case for Stephen Patrick, owner of Stephen Patrick Design, an interior design firm in San Luis Obispo. As a kid, Stephen possessed “the eye for design.” Growing up, he would rearrange the interior of his own home, realizing the impact that interior design has on aesthetics. Stephen went on to study and pursue a career in interior design, helping people “feel comfortable in their homes.” My childhood escapades didn’t come to fruition for me like Stephen’s did. I guess being the greatest NBA player of all time wasn’t in the cards for little ol’ me. If it wasn’t for that damned sprained ankle I suffered in high school, things might look a little different. Fast forward to today, where I found myself walking into Stephen Patrick Design (the firm) for my 6th consultation – not quite the same feeling as entering a packed arena to MVP chants, but hey. Instead of lacing ‘em up, I got to meet with Sawyer! Sawyer works for Stephen, assisting in design.</p>
-
-        <p>I started the session by introducing Sawyer to Claude – I explained how Claude would partake in the discovery process with us. First, I learned that the firm focuses mostly on high-end residential projects, but not entirely, occasionally designing venues and other large gatherings. The firm works on some of the nicest homes in the area (Shell Beach, Pismo Beach, Cayucos, etc.). The firm’s projects include everything from furniture selection to entire remodels. Here are some of the day to day tasks that make these projects possible: managing orders, taking measurements, color theory, coordinating with contractors, and lots of communication with customers. This led me to ask about how the firm markets their services: “We lack real marketing presence, but Stephen does really well with word-of-mouth.” Last night, I did some research and created some prompts that I thought might be useful. Based on just the first five minutes of discovery, I could tell that a lot of the prompts that I created would prove useful.</p>
-
-        <p>Sawyer explained that the firm recently completed a large project that took place at The Madonna Expo Center, designing the venue for the SLO Chamber of Commerce’s annual dinner. Because they work on so many great, singular projects, I felt that the firm was unique in that these projects could lend themselves to such great stories. Stories that should be marketed, promoted, and shared with others! We began by feeding Claude the specifics of what went into designing the Madonna Expo Center: “We did the drapery, lighting, flower arrangement, and table setting for the entire expo center. This was a 600 person dinner that lasted 3 hours.” We  then created a newsletter around this. We prompted Claude by asking it to focus specifically on storytelling. The result was a concise and compelling newsletter that took seconds to create which could be accompanied by photography of their work. Currently, the firm showcases their work through flyers (which are attached at the bottom of this page) that are sent to clients and can be found at his store. We also prompted Claude to create social media postings based on this project. Claude suggested several compelling ways to tell the story - from showcasing the transformation of the Expo Center, to highlighting intimate design details that brought the space to life. Each suggestion focused on engaging potential clients through visual storytelling, something that could elevate the firm's current marketing approach beyond traditional printed flyers.</p>
-
-        <p>Something that continues to get significantly better in the world of AI is text to image generation. The best tool here is Midjourney. Just by giving Midjourney a few sentences describing the image you want to create, it can generate photos so realistic that they're nearly indistinguishable from real ones. This tool seemed particularly valuable for an interior design firm. It could help designers visualize concepts and spark creative ideas before implementing them in real spaces. To demonstrate this tool, I attempted to recreate the fully decked out Madonna Expo Center. What we received was a photo that was almost identical to the real thing. At this time, Stephen was busy putting out fires, but that didn’t stop Sawyer from pulling him away: “You’ve gotta see this Stephen!” Stephen showed me printed out photos of the expo center and I will say, the resemblance was uncanny. After this, we spent some time thinking creatively with Midjourney, asking it to create images of sleek modern kitchens with waterfall islands, minimalist cabinet designs, and dramatic pendant lighting. Sawyer was particularly excited about the tool's potential – he plans to use Midjourney to help build a collection of designs that could serve as inspiration for future projects.</p>
-
-        <p>The firm doesn’t currently have a website because it’s not really urgent – the firm does very well. This has been a common theme so far when working with business owners. They spread themselves so thin running their businesses that non essential business functions like marketing can often be ignored. Prior to AI, there might have been no way to address the issue of not having enough bandwidth to cover all the bases. I explained to Stephen and Sawyer how by using Claude/any other LLM, a website could be created with no prior programming experience. This could serve as a portfolio that showcases the firm’s work. The session ended with a discussion about how these tools could provide some immediate assistance to the firm. Stephen was open to the idea of working together in the future, focusing mainly on creating a website for his business. Stephen also serves as the President of Downtown SLO, a nonprofit organization with the mission of “fostering an economically vibrant downtown.” I was glad to have met with someone who cares deeply about the local community. Despite his packed schedule, Stephen graciously made time for our meeting. I hope that this can be the beginning of a new and exciting chapter for Stephen Patrick Design!</p>
-    </div>
-</div>
-
-    
     <div class="social-links">
         <a href="mailto:johncalbert@yahoo.com">Email</a>
         <a href="https://linkedin.com/in/johnalbert12">LinkedIn</a>
         <a href="https://twitter.com/john_albert12">Twitter</a>
         <a href="https://docs.google.com/document/d/1vcfC7n4hHXx-0RB9ac4-D0p7P2E8O1rjH_V1PaIJ7gw/edit?usp=sharing">Materials</a>
     </div>
-
-    <!-- Add this script at the end of the body -->
-    <script>
-        document.querySelectorAll('.story-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                header.classList.toggle('active');
-                content.classList.toggle('active');
-            });
-        });
-    </script>
 </body>
 </html>
